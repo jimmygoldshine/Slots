@@ -3,9 +3,9 @@
     <h1>{{ msg }}</h1>
     <button id="spin-btn" v-on:click="spin">Shake your phone to spin</button>
     <div id='wheels-container'>
-      <wheel v-on:selection="wheelOneSelection" v-bind:spinning="isSpinning" number="wheel-1" tile-count="4"></wheel>
-      <wheel v-on:selection="wheelTwoSelection" v-bind:spinning="isSpinning" number="wheel-2" tile-count="4"></wheel>
-      <wheel v-on:selection="wheelThreeSelection" v-bind:spinning="isSpinning" number="wheel-3" tile-count="5"></wheel>
+      <wheel v-on:selection="wheelOneSelection" v-bind:spinning="isSpinning" number="1" tile-count="4"></wheel>
+      <wheel v-on:selection="wheelTwoSelection" v-bind:spinning="isSpinning" number="2" tile-count="4"></wheel>
+      <wheel v-on:selection="wheelThreeSelection" v-bind:spinning="isSpinning" number="3" tile-count="5"></wheel>
     </div>
     <div id='product-container' v-if="spun">
       <product v-bind:wheelSelection="wheels"></product>

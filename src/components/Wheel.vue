@@ -1,8 +1,8 @@
 <template>
   <div class="wheel-container">
-    <div v-bind:class="isSpinning" v-bind:id="number">
+    <div v-bind:class="isSpinning" v-bind:id="wheel">
     </div>
-    <button id="hold">HOLD</button>
+    <button id="hold" v-bind:class="light" v-on:click="hold">HOLD</button>
   </div>
 </template>
 
@@ -10,34 +10,82 @@
 export default {
   props: ['spinning', 'number', 'tileCount'],
 
-  data () {
+  data() {
     return {
-      spin: false,
-      selection: "3"
+      selection: "3",
+      held: false,
+      lit: false
     }
+  },
+
+  mounted() {
+    this.sequentialLighting()
   },
 
   watch: {
     spinning: function() {
-      if(this.spinning) {
+      if(this.spinning && !this.held) {
         this.selection = this.getRandomTile();
         this.$emit('selection', this.selection)
+        clearInterval(this.interval);
+        this.sequentialLighting(3);
+      }
+      var self = this;
+      if(!this.spinning) {
+        clearInterval(this.interval);
+        this.blockLighting()
       }
     }
   },
+
   methods: {
     getRandomTile: function() {
       var number = Math.floor(Math.random() * parseInt(this.tileCount)) + 1;
       return number.toString();
+    },
+    hold: function() {
+      if (!this.spinning) {
+        this.held = !(this.held)
+      }
+    },
+    sequentialLighting: function(speed=1) {
+      var self = this;
+      setTimeout(function() {
+        self.lit = true
+        self.interval = setInterval(function() {
+          self.lit = true;
+          setTimeout(function() {
+            self.lit = false
+          }, (333/speed))
+        }, (1000/speed))
+      }, ((self.number-1)/3)*1000/speed)
+    },
+    blockLighting: function() {
+      var self = this;
+      this.interval = setInterval(function() {
+        console.log('here')
+        self.lit = !self.lit
+      }, 500)
     }
   },
+
   computed: {
     isSpinning: function() {
-      if(this.spinning) {
+      if(this.spinning && !this.held) {
         return "spinning-" + this.selection
       } else {
         return "static-" + this.selection
       }
+    },
+    wheel: function() {
+      return "wheel-" + this.number.toString();
+    },
+    light: function() {
+      var status = this.lit ? "light" : "dark";
+      if (this.held) {
+        status = "light"
+      }
+      return status
     }
   }
 }
@@ -78,16 +126,40 @@ a {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 20px;
-  background: rgba(215, 0, 0, 0.67);
-  border: 2px solid #8f0303;
+  filter: brightness(75%);
+  background: #d93434;
+  background-image: -webkit-linear-gradient(top, #d93434, #9e2525);
+  background-image: -moz-linear-gradient(top, #d93434, #9e2525);
+  background-image: -ms-linear-gradient(top, #d93434, #9e2525);
+  background-image: -o-linear-gradient(top, #d93434, #9e2525);
+  background-image: linear-gradient(to bottom, #d93434, #9e2525);
+  -webkit-border-radius: 3;
+  -moz-border-radius: 3;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 2px 3px #666666;
+  -moz-box-shadow: 0px 2px 3px #666666;
+  box-shadow: 0px 2px 3px #666666;
+  color: #000000;
+  border: solid #8f1d1d 2px;
 }
 
 #hold:hover {
   cursor: pointer;
+  filter: brightness(120%)
+}
+
+#hold:active {
+  box-shadow: 0 0 1px 0 black inset;
 }
 
 #hold:focus {
   outline: 0
+}
+
+#wheel-1 + #hold.light,
+#wheel-2 + #hold.light,
+#wheel-3 + #hold.light {
+  filter: brightness(120%)
 }
 
 #wheel-1.static-1 {
