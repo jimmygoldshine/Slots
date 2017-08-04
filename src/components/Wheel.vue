@@ -63,7 +63,6 @@ export default {
     blockLighting: function() {
       var self = this;
       this.interval = setInterval(function() {
-        console.log('here')
         self.lit = !self.lit
       }, 500)
     }
