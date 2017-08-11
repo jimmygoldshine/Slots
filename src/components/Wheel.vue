@@ -163,7 +163,7 @@ a {
 
 #wheel-1.static-1 {
   background-image: url('../assets/pounds.png');
-  background-position: 0 2183px;
+  background-position: 0 2440px;
   background-size: 100% auto;
   height: 100%;
 }
@@ -173,19 +173,19 @@ a {
   background-size: 100% auto;
   width: 100%;
   height: 100%;
-  animation-name: wheelspin-1;
+  animation-name: wheel-1-spin-1;
   animation-duration: 4s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
-@keyframes wheelspin-1 {
-   100% { background-position: 0 2183px; }
+@keyframes wheel-1-spin-1 {
+  100% { background-position: 0 2440px; }
 }
 
 #wheel-1.static-2 {
   background-image: url('../assets/pounds.png');
-  background-position: 0 2302px;
+  background-position: 0 2572px;
   background-size: 100% auto;
   height: 100%;
 }
@@ -194,20 +194,20 @@ a {
   background-image: url('../assets/pounds.png');
   background-size: 100% auto;
   width: 100%;
-  animation-name: wheelspin-2;
+  animation-name: wheel-1-spin-2;
   animation-duration: 4s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
   height: 100%;
 }
 
-@keyframes wheelspin-2 {
-   100% { background-position: 0 2302px; }
+@keyframes wheel-1-spin-2 {
+   100% { background-position: 0 2572px; }
 }
 
 #wheel-1.static-3 {
   background-image: url('../assets/pounds.png');
-  background-position: 0 2410px;
+  background-position: 0 2710px;
   height: 100%;
   background-size: 100% auto;
 }
@@ -217,19 +217,19 @@ a {
   background-size: 100% auto;
   height: 100%;
   width: 100%;
-  animation-name: wheelspin-3;
+  animation-name: wheel-1-spin-3;
   animation-duration: 4s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
-@keyframes wheelspin-3 {
-  100% { background-position: 0 2410px; }
+@keyframes wheel-1-spin-3 {
+  100% { background-position: 0 2710px; }
 }
 
 #wheel-1.static-4 {
   background-image: url('../assets/pounds.png');
-  background-position: 0 2530px;
+  background-position: 0 2860px;
   background-size: 100% auto;
   height: 100%;
 }
@@ -239,19 +239,19 @@ a {
   background-size: 100% auto;
   width: 100%;
   height: 100%;
-  animation-name: wheelspin-4;
+  animation-name: wheel-1-spin-4;
   animation-duration: 4s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
-@keyframes wheelspin-4 {
-   100% { background-position: 0 2530px; }
+@keyframes wheel-1-spin-4 {
+   100% { background-position: 0 2860px; }
 }
 
 #wheel-2.static-1 {
   background-image: url('../assets/boats.png');
-  background-position: 0 2330px;
+  background-position: 0 2440px;
   background-size: 100% auto;
   height: 100%;
 }
@@ -261,15 +261,19 @@ a {
   background-size: 100% auto;
   width: 100%;
   height: 100%;
-  animation-name: wheelspin-1;
-  animation-duration: 4s;
+  animation-name: wheel-1-spin-1;
+  animation-duration: 3.8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
+@keyframes wheel-2-spin-1 {
+  100% { background-position: 0 3415px; }
+}
+
 #wheel-2.static-2 {
   background-image: url('../assets/boats.png');
-  background-position: 0 2422px;
+  background-position: 0 2572px;
   background-size: 100% auto;
   height: 100%;
 }
@@ -279,15 +283,15 @@ a {
   background-size: 100% auto;
   width: 100%;
   height: 100%;
-  animation-name: wheelspin-2;
-  animation-duration: 4s;
+  animation-name: wheel-1-spin-2;
+  animation-duration: 3.8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
 #wheel-2.static-3 {
   background-image: url('../assets/boats.png');
-  background-position: 0 2302px;
+  background-position: 0 2710px;
   height: 100%;
   background-size: 100% auto;
 }
@@ -297,15 +301,19 @@ a {
   background-size: 100% auto;
   width: 100%;
   height: 100%;
-  animation-name: wheelspin-3;
-  animation-duration: 4s;
+  animation-name: wheel-1-spin-3;
+  animation-duration: 3.8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
+@keyframes wheel-2-spin-3 {
+  100% { background-position: 0 3665px; }
+}
+
 #wheel-2.static-4 {
   background-image: url('../assets/boats.png');
-  background-position: 0 2606px;
+  background-position: 0 2860px;
   background-size: 100% auto;
   height: 100%;
 }
@@ -315,15 +323,19 @@ a {
   background-size: 100% auto;
   width: 100%;
   height: 100%;
-  animation-name: wheelspin-4;
-  animation-duration: 4s;
+  animation-name: wheel-1-spin-4;
+  animation-duration: 3.8s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
+@keyframes wheel-2-spin-4 {
+  100% { background-position: 0 3680px; }
+}
+
 #wheel-3.static-1 {
   background-image: url('../assets/ages.png');
-  background-position: 0 2330px;
+  background-position: 0 2440px;
   background-size: 100% auto;
   height: 100%;
 }
@@ -333,15 +345,15 @@ a {
   background-size: 100% auto;
   width: 100%;
   height: 100%;
-  animation-name: wheelspin-1;
-  animation-duration: 4s;
+  animation-name: wheel-1-spin-1;
+  animation-duration: 3.5s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
 #wheel-3.static-2 {
   background-image: url('../assets/ages.png');
-  background-position: 0 2422px;
+  background-position: 0 2572px;
   background-size: 100% auto;
   height: 100%;
 }
@@ -350,15 +362,15 @@ a {
   background-size: 100% auto;
   height: 100%;
   background-image: url('../assets/ages.png');
-  animation-name: wheelspin-2;
-  animation-duration: 4s;
+  animation-name: wheel-1-spin-2;
+  animation-duration: 3.5s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
 #wheel-3.static-3 {
   background-image: url('../assets/ages.png');
-  background-position: 0 2514px;
+  background-position: 0 2710px;
   height: 100%;
   background-size: 100% auto;
 }
@@ -367,14 +379,15 @@ a {
   background-size: 100% auto;
   height: 100%;
   background-image: url('../assets/ages.png');
-  animation-name: wheelspin-3;
-  animation-duration: 4s;
+  animation-name: wheel-1-spin-3;
+  animation-duration: 3.5s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
 }
 
 #wheel-3.static-4 {
   background-image: url('../assets/ages.png');
+  background-position: 0 2860px;
   background-size: 100% auto;
   height: 100%;
 }
@@ -383,31 +396,10 @@ a {
   background-size: 100% auto;
   height: 100%;
   background-image: url('../assets/ages.png');
-  animation-name: wheelspin-4;
-  animation-duration: 4s;
+  animation-name: wheel-1-spin-4;
+  animation-duration: 3.5s;
   animation-timing-function: ease-out;
   animation-fill-mode: forwards;
-}
-
-#wheel-3.static-5 {
-  background-image: url('../assets/ages.png');
-  background-position: 0 2606px;
-  background-size: 100% auto;
-  height: 100%;
-}
-
-#wheel-3.spinning-5 {
-  background-size: 100% auto;
-  height: 100%;
-  background-image: url('../assets/ages.png');
-  animation-name: wheelspin-5;
-  animation-duration: 4s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
-}
-
-@keyframes wheelspin-5 {
-  100% {background-position: 0 3006px};
 }
 
 

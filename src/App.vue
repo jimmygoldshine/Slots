@@ -20,6 +20,9 @@ export default {
 
 <style>
 #app {
+  position: absolute;
+  width: 100%;
+  top: 50px;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

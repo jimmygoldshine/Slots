@@ -1,63 +1,114 @@
 <template>
   <div class='product'>
-    <div class='arrow' id='left'>
-      <span>Previous</span>
-    </div>
-    <div class='image'>
-      <img :src="getUrl">
-    </div>
-    <div class='intro'>
-      <h1 class='name'>{{ selectedProduct.name }}</h1>
-      <span class='tagline'>{{ selectedProduct.tagline }}</span>
-      <span class='availability'>{{ selectedProduct.availability }}</span>
-      <span class='price'>£{{ selectedProduct.price }}</span>
-      <button class='add-to-basket'>Add To Basket</button>
-    </div>
-    <div class='arrow' id='right'>
-      <span>Next</span>
-    </div>
+    <v-touch @swipeleft="nextProduct" @swiperight="previousProduct">
+      <div class='arrow' id='left'>
+        <img v-on:click="previousProduct" v-bind:class="position" src='../assets/left-arrow.png'>
+      </div>
+      <div id="inner-product">
+      <div class='image'>
+        <img :src="getUrl">
+      </div>
+      <div class='intro'>
+        <h1 class='name'>{{ selectedProduct.name }}</h1>
+        <span class='tagline'>{{ selectedProduct.tagline }}</span>
+        <span class='availability'>{{ selectedProduct.availability }}</span>
+        <span class='price'>£{{ selectedProduct.price }}</span>
+        <button class='add-to-basket'>Add To Basket</button>
+      </div>
+      </div>
+      <div class='arrow' id='right'>
+        <img v-on:click="nextProduct" v-bind:class="position" src='../assets/right-arrow.png'>
+      </div>
+    </v-touch>
   </div>
 </template>
 
 <script>
+
+import Vue from 'vue'
+import VueTouch from 'vue-touch';
+Vue.use(VueTouch)
 
 export default {
   props: ['wheelSelection', 'products'],
 
   data() {
     return {
+      productScores: {},
       filteredProducts: [],
-      selectedProduct: null
+      selectedProduct: null,
+      arrowBounce: false
     }
   },
 
   created() {
+    for (var i = 0; i < this.products.length; i++) {
+      this.productScores[this.products[i].name] = 0
+    };
+    console.log('wheelS', this.wheelSelection);
     for (var attribute in this.wheelSelection) {
-      this.filterProducts(attribute, this.wheelSelection[attribute])
+      this.scoreProducts(attribute, this.wheelSelection[attribute]);
     }
-    var name = this.filteredProducts[0].name
-    this.selectedProduct = this.selectProduct(name);
+    this.filterProducts();
+    this.selectedProduct = this.filteredProducts[0];
+  },
+
+  mounted() {
+    this.bounce();
   },
 
   methods: {
-    filterProducts: function(attribute, value) {
-      var products = this.products.filter((product) => {
-        if (product[attribute + "Score"].includes(value)) {
-          return product
+    filterProducts: function() {
+      var validProducts = []
+      for (var product in this.productScores) {
+        if (this.productScores[product] === 3) {
+          validProducts.push(product)
         }
+      }
+      this.filteredProducts = this.products.filter((product) => {
+        return validProducts.includes(product.name)
       })
-      this.filteredProducts = this.filteredProducts.concat(products);
     },
-    selectProduct: function(name) {
-      return this.products.find((product) => {
-        return product.name === name
-      })
+    scoreProducts: function(attribute, value) {
+      for (var i = 0; i < this.products.length; i++) {
+        var product = this.products[i];
+        if (product[attribute + "Score"].includes(value)) {
+          console.log('+1 for', product.name, ' on ', attribute);
+          this.productScores[product.name] += 1;
+        }
+      }
+    },
+    nextProduct: function() {
+      var currentIndex = this.filteredProducts.indexOf(this.selectedProduct);
+      if (currentIndex === this.filteredProducts.length - 1) {
+        this.selectedProduct = this.filteredProducts[0];
+      } else {
+        this.selectedProduct = this.filteredProducts[currentIndex + 1];
+      }
+    },
+    previousProduct: function() {
+      var currentIndex = this.filteredProducts.indexOf(this.selectedProduct);
+      if (currentIndex === 0) {
+        this.selectedProduct = this.filteredProducts[this.filteredProducts.length-1];
+      } else {
+        this.selectedProduct = this.filteredProducts[currentIndex - 1]
+      }
+    },
+    bounce: function() {
+      var self = this;
+      this.interval = setInterval(function() {
+        self.arrowBounce = !self.arrowBounce
+      }, 500)
     }
   },
 
   computed: {
     getUrl: function() {
       return this.selectedProduct.img
+    },
+    position: function() {
+      var status = this.arrowBounce ? "apex" : "floor";
+      return status
     }
   }
 };
@@ -66,10 +117,23 @@ export default {
 
 <style>
 
-.product {
+.product > div {
   display: flex;
   flex-direction: row;
   width: 100%;
+  align-items: center;
+}
+
+#inner-product {
+  padding: 5px;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  align-items: center;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .image, .intro {
@@ -81,6 +145,7 @@ export default {
   display: flex;
   flex-direction: column;
   flex: 1 1 0;
+  align-self: flex-start;
   padding: 20px 20px 0;
   text-align: left;
 }
@@ -126,6 +191,31 @@ export default {
 
 .image > img {
   width: 100%
+}
+
+.arrow {
+  position: relative;
+  top: 50%;
+  width: 105px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.arrow > img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s linear;
+}
+
+#left.arrow > img.apex {
+  text-align:right;
+  transform: translate(-10px, 0px);
+  transition: all 0.5s linear;
+}
+
+#right.arrow > img.apex {
+  transform: translate(10px, 0px);
+  transition: all 0.5s linear;
 }
 
 </style>

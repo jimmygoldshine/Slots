@@ -5,7 +5,7 @@
     <div id='wheels-container'>
       <wheel v-on:selection="wheelOneSelection" v-bind:spinning="isSpinning" number="1" tile-count="4"></wheel>
       <wheel v-on:selection="wheelTwoSelection" v-bind:spinning="isSpinning" number="2" tile-count="4"></wheel>
-      <wheel v-on:selection="wheelThreeSelection" v-bind:spinning="isSpinning" number="3" tile-count="5"></wheel>
+      <wheel v-on:selection="wheelThreeSelection" v-bind:spinning="isSpinning" number="3" tile-count="4"></wheel>
     </div>
     <div id='product-container' v-if="spun">
       <product v-bind:wheelSelection="wheels" v-bind:products="products"></product>
@@ -70,7 +70,6 @@ export default {
         .then((response) => {
           var products = response.data.Sheet1;
           self.products = self.scoreAttributes(products)
-          console.log('RAWproducts', self.products)
       });
     },
     scoreAttributes: function(products) {
@@ -101,7 +100,12 @@ export default {
       })
     },
     scoreShipping: function(product) {
-      return [product.shipping]
+      if (typeof(product.shipping) === 'number') {
+        return [parseInt(product.shipping)]
+      }
+      return product.shipping.split(',').map((char) => {
+        return parseInt(char)
+      })
     }
   },
   watch: {
@@ -135,12 +139,12 @@ export default {
   display: flex;
   justify-content: space-between;
   height: 300px;
-  width: 800px;
+  width: 900px;
 }
 
 #product-container {
-  margin: 100px auto;
-  max-width: 1000px;
+  margin: 200px auto;
+  max-width: 950px;
   height: 500px;
 }
 
