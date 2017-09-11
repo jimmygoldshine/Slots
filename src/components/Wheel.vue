@@ -274,14 +274,14 @@ a {
 }
 
 #wheel-2.static-2 {
-  background-image: url('../assets/boats.png');
+  background-image: url('../assets/type.png');
   background-position: 0 2572px;
   background-size: 100% auto;
   height: 100%;
 }
 
 #wheel-2.spinning-2 {
-  background-image: url('../assets/boats.png');
+  background-image: url('../assets/type.png');
   background-size: 100% auto;
   width: 100%;
   height: 100%;
@@ -292,14 +292,14 @@ a {
 }
 
 #wheel-2.static-3 {
-  background-image: url('../assets/boats.png');
+  background-image: url('../assets/type.png');
   background-position: 0 2710px;
   height: 100%;
   background-size: 100% auto;
 }
 
 #wheel-2.spinning-3 {
-  background-image: url('../assets/boats.png');
+  background-image: url('../assets/type.png');
   background-size: 100% auto;
   width: 100%;
   height: 100%;
@@ -314,14 +314,14 @@ a {
 }
 
 #wheel-2.static-4 {
-  background-image: url('../assets/boats.png');
+  background-image: url('../assets/type.png');
   background-position: 0 2860px;
   background-size: 100% auto;
   height: 100%;
 }
 
 #wheel-2.spinning-4 {
-  background-image: url('../assets/boats.png');
+  background-image: url('../assets/type.png');
   background-size: 100% auto;
   width: 100%;
   height: 100%;
@@ -336,14 +336,14 @@ a {
 }
 
 #wheel-3.static-1 {
-  background-image: url('../assets/ages.png');
+  background-image: url('../assets/demos.png');
   background-position: 0 2440px;
   background-size: 100% auto;
   height: 100%;
 }
 
 #wheel-3.spinning-1 {
-  background-image: url('../assets/ages.png');
+  background-image: url('../assets/demos.png');
   background-size: 100% auto;
   width: 100%;
   height: 100%;
@@ -354,7 +354,7 @@ a {
 }
 
 #wheel-3.static-2 {
-  background-image: url('../assets/ages.png');
+  background-image: url('../assets/demos.png');
   background-position: 0 2572px;
   background-size: 100% auto;
   height: 100%;
@@ -363,7 +363,7 @@ a {
 #wheel-3.spinning-2 {
   background-size: 100% auto;
   height: 100%;
-  background-image: url('../assets/ages.png');
+  background-image: url('../assets/demos.png');
   animation-name: wheel-1-spin-2;
   animation-duration: 3.5s;
   animation-timing-function: ease-out;
@@ -371,7 +371,7 @@ a {
 }
 
 #wheel-3.static-3 {
-  background-image: url('../assets/ages.png');
+  background-image: url('../assets/demos.png');
   background-position: 0 2710px;
   height: 100%;
   background-size: 100% auto;
@@ -380,7 +380,7 @@ a {
 #wheel-3.spinning-3 {
   background-size: 100% auto;
   height: 100%;
-  background-image: url('../assets/ages.png');
+  background-image: url('../assets/demos.png');
   animation-name: wheel-1-spin-3;
   animation-duration: 3.5s;
   animation-timing-function: ease-out;
@@ -388,7 +388,7 @@ a {
 }
 
 #wheel-3.static-4 {
-  background-image: url('../assets/ages.png');
+  background-image: url('../assets/demos.png');
   background-position: 0 2860px;
   background-size: 100% auto;
   height: 100%;
@@ -397,7 +397,7 @@ a {
 #wheel-3.spinning-4 {
   background-size: 100% auto;
   height: 100%;
-  background-image: url('../assets/ages.png');
+  background-image: url('../assets/demos.png');
   animation-name: wheel-1-spin-4;
   animation-duration: 3.5s;
   animation-timing-function: ease-out;
