@@ -7,8 +7,7 @@
       <wheel v-on:selection="wheelTwoSelection" v-bind:spinning="isSpinning" number="2" tile-count="4"></wheel>
       <wheel v-on:selection="wheelThreeSelection" v-bind:spinning="isSpinning" number="3" tile-count="4"></wheel>
     </div>
-    <div id='product-container' v-if="spun">
-      <product v-bind:wheelSelection="wheels" v-bind:products="products"></product>
+    <product-grid v-if="spun" :products="products" :wheelSelection="wheels"></product-grid>
     </div>
   </div>
 </template>
@@ -17,12 +16,14 @@
 
 import Wheel from './Wheel'
 import Product from './Product'
+import ProductGrid from './ProductGrid'
+import ProductGridItem from './ProductGridItem'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 export default {
   components: {
-    Wheel, Product
+    Wheel, ProductGrid, ProductGridItem
   },
 
   data() {
@@ -140,12 +141,6 @@ export default {
   justify-content: space-between;
   height: 300px;
   width: 900px;
-}
-
-#product-container {
-  margin: 200px auto;
-  max-width: 950px;
-  height: 550px;
 }
 
 #spin-btn {
