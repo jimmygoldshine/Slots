@@ -27,7 +27,7 @@ export default {
 
   data() {
     return {
-      msg: 'Welcome to the Slot',
+      msg: 'Welcome to your One-Armed (Product) Bandit',
       x: 0,
       wheels: {
         'price': 3,
@@ -145,7 +145,7 @@ export default {
 #product-container {
   margin: 200px auto;
   max-width: 950px;
-  height: 500px;
+  height: 550px;
 }
 
 #spin-btn {

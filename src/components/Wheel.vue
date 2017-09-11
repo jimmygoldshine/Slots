@@ -114,9 +114,11 @@ a {
 .wheel-container {
   flex: 1 1 0;
   background-size: 100% auto;
+  border: -1px solid black;
   margin: 0 10px;
   height: 100%;
   background-size: 100% auto;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 #hold {

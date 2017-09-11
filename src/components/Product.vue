@@ -1,10 +1,11 @@
 <template>
   <div class='product'>
+    <h2 class='match'>You've matched {{ this.filteredProducts.length }} products</h2>
     <v-touch @swipeleft="nextProduct" @swiperight="previousProduct">
       <div class='arrow' id='left'>
         <img v-on:click="previousProduct" v-bind:class="position" src='../assets/left-arrow.png'>
       </div>
-      <div id="inner-product">
+      <div id="inner-product" v-bind:class='swipeStatus'>
       <div class='image'>
         <img :src="getUrl">
       </div>
@@ -37,7 +38,8 @@ export default {
       productScores: {},
       filteredProducts: [],
       selectedProduct: null,
-      arrowBounce: false
+      arrowBounce: false,
+      swipe: false
     }
   },
 
@@ -79,20 +81,28 @@ export default {
       }
     },
     nextProduct: function() {
+      this.swipe = !this.swipe
       var currentIndex = this.filteredProducts.indexOf(this.selectedProduct);
       if (currentIndex === this.filteredProducts.length - 1) {
         this.selectedProduct = this.filteredProducts[0];
       } else {
         this.selectedProduct = this.filteredProducts[currentIndex + 1];
       }
+      setTimeout(() => {
+        this.swipe = !this.swipe
+      }, 1000)
     },
     previousProduct: function() {
+      this.swipe = !this.swipe
       var currentIndex = this.filteredProducts.indexOf(this.selectedProduct);
       if (currentIndex === 0) {
         this.selectedProduct = this.filteredProducts[this.filteredProducts.length-1];
       } else {
         this.selectedProduct = this.filteredProducts[currentIndex - 1]
       }
+      setTimeout(() => {
+        this.swipe = !this.swipe
+      }, 1000)
     },
     bounce: function() {
       var self = this;
@@ -108,6 +118,10 @@ export default {
     },
     position: function() {
       var status = this.arrowBounce ? "apex" : "floor";
+      return status
+    },
+    swipeStatus: function() {
+      var status = this.swipe ? "swipe" : "still";
       return status
     }
   }
@@ -134,6 +148,13 @@ export default {
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+
+#inner-product.swipe {
+  transform: rotateY(360deg);
+  transition: 1s;
+	transform-style: preserve-3d;
 }
 
 .image, .intro {
