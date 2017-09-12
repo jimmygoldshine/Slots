@@ -1,6 +1,12 @@
 <template>
-  <div class='product-grid'>
-    <product-grid-item v-for="(product, index) in filteredProducts" :key="index" :product="product"></product-grid-item>
+  <div class='product-container'>
+    <div class='found'>
+      <h2 class='match'>found </h2>
+      <span>{{ this.filteredProducts.length }}</span>
+    </div>
+    <div class='product-grid'>
+      <product-grid-item v-for="(product, index) in filteredProducts" :key="index" :product="product"></product-grid-item>
+    </div>
   </div>
 </template>
 
@@ -65,14 +71,26 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
-.product-grid {
+.product-container {
   width: 80%;
   margin: 100px auto;
+}
+
+.product-grid {
+  border-top: 1px solid #eaeaea;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+}
+
+.found {
+  text-align: right;
+}
+
+.match {
+  display: inline-block;
 }
 
 </style>

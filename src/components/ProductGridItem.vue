@@ -6,7 +6,7 @@
     <div class="product-info">
       <span id="name">{{ this.product.name }}</span>
       <span id="tagline">{{ this.product.tagline }}</span>
-      <span id='price'>RRP £{{ this.product.price }}</span>
+      <span id='price'>£{{ this.product.price }}</span>
     </div>
   </div>
 </template>
@@ -51,8 +51,9 @@ span {
   display: block;
 }
 
-#name {
-  text-decoration: bold;
+#name, #price {
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 
