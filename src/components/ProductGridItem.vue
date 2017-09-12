@@ -6,7 +6,7 @@
     <div class="product-info">
       <span id="name">{{ this.product.name }}</span>
       <span id="tagline">{{ this.product.tagline }}</span>
-      <span id='price'>£{{ this.product.price }}</span>
+      <span id='price'>£{{ Number(this.product.price).toFixed(2) }}</span>
     </div>
   </div>
 </template>

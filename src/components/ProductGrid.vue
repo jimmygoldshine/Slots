@@ -31,13 +31,15 @@ export default {
 
   created() {
     for (var i = 0; i < this.products.length; i++) {
-      this.productScores[this.products[i].name] = 0
+      this.productScores[this.products[i].id] = 0
     };
     for (var attribute in this.wheelSelection) {
       this.scoreProducts(attribute, this.wheelSelection[attribute]);
     }
     this.filterProducts();
-    this.selectedProduct = this.filteredProducts[0];
+    console.log(this.wheelSelection);
+    console.log(this.productScores);
+    console.log(this.filteredProducts);
   },
 
   methods: {
@@ -45,18 +47,21 @@ export default {
       var validProducts = []
       for (var product in this.productScores) {
         if (this.productScores[product] === 3) {
-          validProducts.push(product)
+          console.log('here')
+          validProducts.push(parseInt(product))
         }
       }
+      console.log(validProducts)
       this.filteredProducts = this.products.filter((product) => {
-        return validProducts.includes(product.name)
+        return validProducts.includes(product.id)
       })
     },
     scoreProducts: function(attribute, value) {
       for (var i = 0; i < this.products.length; i++) {
         var product = this.products[i];
         if (product[attribute + "Score"].includes(value)) {
-          this.productScores[product.name] += 1;
+          console.log('+1 on', attribute)
+          this.productScores[product.id] += 1;
         }
       }
     }
