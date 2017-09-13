@@ -32,15 +32,21 @@ export default {
 
 .product {
   width: calc(23%);
-  margin: 1%;
+  margin: 5% 1% 0% 1%;
 }
 
-.img {
-  width: 100%
+.product > div {
+  display: block;
+}
+
+.image {
+  width: 100%;
+  height: auto;
 }
 
 img {
-  width: 100%
+  width: 100%;
+  height: auto;
 }
 
 .product-info {
